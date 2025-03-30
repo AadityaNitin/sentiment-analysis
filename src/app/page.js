@@ -42,7 +42,7 @@ export default function Home() {
     if (user) {
       const historyQuery = query(
         collection(db, 'users', user.uid, 'sentimentHistory'),
-        orderBy('timestamp', 'desc')
+        orderBy('timestamp')
       );
       const unsubscribe = onSnapshot(historyQuery, (snapshot) => {
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
